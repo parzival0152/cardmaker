@@ -16,12 +16,12 @@
 				<select v-model="chosenClass" placeholder="Back-Icon" style="width: 100%;">
 					<option v-for="(cls,i) in classOptions" :value="cls" :key="i">{{cls}}</option>
 				</select><br/>
-				<input type="text" v-model="card_title">
+				<input type="text" v-model="card_title"><br>
+				<textarea cols="30" rows="10" v-model="textIn"></textarea>
 			</div>
 			<div id="display" class="col d-flex">
-
 				<!-- forint of the card -->
-				<div class="card card-25-35" :style="card_style">
+				<div class="card card-tarot" :style="card_style">
 					<div class="card-title-inlineicon-container">
 						<div class="card-title-inlineicon icon-class-bard"></div>
 					</div>
@@ -34,7 +34,7 @@
 				</div>
 
 				<!-- back of the card -->
-				<div class="card card-25-35" :style="card_style">
+				<div class="card card-tarot" :style="card_style">
 					<div class="card-back" :style="back_gradient">
 						<div class="card-back-inner">
 							<div :class="['card-back-icon',iconClass]" :style="card_style">
@@ -50,9 +50,13 @@
 <script>
 
 import class_icons from "../public/assets/scripts/classIcons"
+import TextComp from "./components/TextComp.vue"
 
 export default {
 	name: 'App',
+	components:[
+		TextComp,
+	],
 	data() {
 		return {
 			title: "Test card",
@@ -60,7 +64,8 @@ export default {
 			accent_color: "white",
 			chosenClass:'Back-Icon',
 			classOptions:class_icons,
-			card_title:''
+			card_title:'',
+			textIn:''
 		}
 	},
 	computed: {
@@ -89,7 +94,7 @@ export default {
 </script>
 
 <style>
-* {
+div#display>div{
 	margin: 5px;
 }
 
@@ -104,11 +109,15 @@ export default {
 	border-radius: 8px;
 }
 
-.card-25-35 {
+.card-normal {
 	width: 2.5in;
 	height: 3.5in;
 }
 
+.card-tarot{
+	width: 2.75in;
+	height: 4.75in;
+}
 .card-50-35 {
 	width: 5in;
 	height: 3.5in;
