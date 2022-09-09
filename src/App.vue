@@ -59,6 +59,9 @@ import ClassRuler from "./components/ClassRuler.vue"
 import BulletComp from "./components/BulletComp.vue" 
 import FillComp from "./components/FillComp.vue"
 import SubtitleComp from "./components/SubtitleComp.vue"
+import PropComp from "./components/PropComp.vue"
+import SecComp from "./components/SecComp.vue"
+import DescComp from "./components/DescComp.vue"
 
 import UndefComp from "./components/UndefComp.vue"
 
@@ -67,7 +70,10 @@ const matrix = {
 	rule:'ClassRuler',
 	bullet:'BulletComp',
 	fill:'FillComp',
-	subtitle:'SubtitleComp'
+	subtitle:'SubtitleComp',
+	property:'PropComp',
+	section:'SecComp',
+	description:'DescComp'
 }
 
 function translationMatrix(s){
@@ -85,6 +91,9 @@ export default {
 		BulletComp,
 		FillComp,
 		SubtitleComp,
+		PropComp,
+		SecComp,
+		DescComp,
 		UndefComp,
 	},
 	data() {
@@ -232,9 +241,9 @@ div#display>div{
 
 .card-content-container {
 	padding: 2mm;
-	padding-top: 1mm;
+	padding-top: 2mm;
 	border-radius: 2mm;
-	margin-top: 0px;
+	margin-top: -7px;
 	background-color: white;
 	border-color: inherit;
 	display: flex;

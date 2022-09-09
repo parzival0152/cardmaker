@@ -23,7 +23,7 @@ export default {
     margin-bottom: 0.0em;
     line-height: 18px;
     font-family: 'Noto Sans', 'Myriad Pro', Calibri, Helvetica, Arial, sans-serif;
-    font-size: 10pt;
+    font-size: 12pt;
     font-style: italic;
 }
 </style>
