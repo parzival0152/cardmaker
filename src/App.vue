@@ -24,7 +24,7 @@
 			</div>
 			<div id="display" class="col d-flex">
 				<!-- front of the card -->
-				<div class="card card-tarot" :style="card_style">
+				<div class="card card-normal" :style="card_style">
 					<div class="card-title-inlineicon-container">
 						<div :class="['card-title-inlineicon', TopIconClass]"></div>
 					</div>
@@ -37,7 +37,7 @@
 				</div>
 
 				<!-- back of the card -->
-				<div class="card card-tarot" :style="card_style">
+				<div class="card card-normal" :style="card_style">
 					<div class="card-back" :style="back_gradient">
 						<div class="card-back-inner">
 							<div :class="['card-back-icon',BackIconClass]" :style="card_style">
@@ -55,13 +55,15 @@
 import class_icons from "../public/assets/scripts/classIcons"
 import TextComp from "./components/TextComp.vue"
 import ClassRuler from "./components/ClassRuler.vue"
-import BulletComp from "./components/BulletComp.vue"
+import BulletComp from "./components/BulletComp.vue" 
+import FillComp from "./components/FillComp.vue" 
 import UndefComp from "./components/UndefComp.vue"
 
 const matrix = {
 	text:'TextComp',
 	rule:'ClassRuler',
 	bullet:'BulletComp',
+	fill:'FillComp'
 }
 
 function translationMatrix(s){
@@ -77,7 +79,8 @@ export default {
 		TextComp,
 		ClassRuler,
 		BulletComp,
-		UndefComp
+		FillComp,
+		UndefComp,
 	},
 	data() {
 		return {
@@ -88,7 +91,7 @@ export default {
 			BackIcon:'',
 			classOptions:class_icons,
 			card_title:'',
-			textIn:'text|hello',
+			textIn:'',
 			test:['hello there']
 		}
 	},
@@ -108,7 +111,7 @@ export default {
 		},
 		BackIconClass(){
 			if (this.BackIcon === ''){
-				return ''
+				return this.TopIconClass
 			}
 			return `icon-${this.BackIcon}`
 		},
