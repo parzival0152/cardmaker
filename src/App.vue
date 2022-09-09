@@ -2,7 +2,7 @@
 	<div class="container">
 		<div class="row align-items-start">
 			<div id="general" class="col">
-				
+				{{CompList}}
 			</div>
 			<div id="settings" class="col">
 				card info
@@ -13,23 +13,26 @@
 				<input type="color" name="accent" id="accent_color" v-model="accent_color" />
 				{{ accent_color }}
 				<br />
-				<select v-model="chosenClass" placeholder="Back-Icon" style="width: 100%;">
+				<select v-model="TopIcon" placeholder="Back-Icon" style="width: 100%;">
+					<option v-for="(cls,i) in classOptions" :value="cls" :key="i">{{cls}}</option>
+				</select><br/>
+				<select v-model="BackIcon" placeholder="Back-Icon" style="width: 100%;">
 					<option v-for="(cls,i) in classOptions" :value="cls" :key="i">{{cls}}</option>
 				</select><br/>
 				<input type="text" v-model="card_title"><br>
 				<textarea cols="30" rows="10" v-model="textIn"></textarea>
 			</div>
 			<div id="display" class="col d-flex">
-				<!-- forint of the card -->
+				<!-- front of the card -->
 				<div class="card card-tarot" :style="card_style">
 					<div class="card-title-inlineicon-container">
-						<div class="card-title-inlineicon icon-class-bard"></div>
+						<div :class="['card-title-inlineicon', TopIconClass]"></div>
 					</div>
 					<div class="card-title card-title-13">
 						{{card_title}}
 					</div>
 					<div class="card-content-container">
-
+						<component v-for="(comp,i) in CompList" :key="i" :is="comp.type" :content="comp.content"></component>
 					</div>
 				</div>
 
@@ -37,7 +40,7 @@
 				<div class="card card-tarot" :style="card_style">
 					<div class="card-back" :style="back_gradient">
 						<div class="card-back-inner">
-							<div :class="['card-back-icon',iconClass]" :style="card_style">
+							<div :class="['card-back-icon',BackIconClass]" :style="card_style">
 							</div>
 						</div>
 					</div>
@@ -51,21 +54,42 @@
 
 import class_icons from "../public/assets/scripts/classIcons"
 import TextComp from "./components/TextComp.vue"
+import ClassRuler from "./components/ClassRuler.vue"
+import BulletComp from "./components/BulletComp.vue"
+import UndefComp from "./components/UndefComp.vue"
+
+const matrix = {
+	text:'TextComp',
+	rule:'ClassRuler',
+	bullet:'BulletComp',
+}
+
+function translationMatrix(s){
+	if(!(s in matrix)){
+		return 'UndefComp'
+	}
+	return matrix[s]
+}
 
 export default {
 	name: 'App',
-	components:[
+	components:{
 		TextComp,
-	],
+		ClassRuler,
+		BulletComp,
+		UndefComp
+	},
 	data() {
 		return {
 			title: "Test card",
-			main_color: "indigo",
-			accent_color: "white",
-			chosenClass:'Back-Icon',
+			main_color: "#4b0082",
+			accent_color: "#ffffff",
+			TopIcon:'',
+			BackIcon:'',
 			classOptions:class_icons,
 			card_title:'',
-			textIn:''
+			textIn:'text|hello',
+			test:['hello there']
 		}
 	},
 	computed: {
@@ -73,7 +97,8 @@ export default {
 			return {
 				'color': this.main_color,
 				'border-color': this.main_color,
-				'background-color': this.main_color
+				'background-color': this.main_color,
+				'fill':this.main_color
 			}
 		},
 		back_gradient() {
@@ -81,11 +106,31 @@ export default {
 				background: `radial-gradient(circle, ${this.accent_color} 20%, ${this.main_color} 120%)`
 			}
 		},
-		iconClass(){
-			if (this.chosenClass === 'Back-Icon'){
+		BackIconClass(){
+			if (this.BackIcon === ''){
 				return ''
 			}
-			return `icon-${this.chosenClass}`
+			return `icon-${this.BackIcon}`
+		},
+		TopIconClass(){
+			if (this.TopIcon === ''){
+				return ''
+			}
+			return `icon-${this.TopIcon}`
+		},
+		CompList(){
+			if(this.textIn===''){return []}
+			let basic = this.textIn.split('\n').map(e=>{
+				return e.split('|').map(s=>{
+					return s.trim()
+				})
+			})
+			return basic.map(b=>{
+				return {
+					type:translationMatrix(b[0]),
+					content:b.slice(1)
+				}
+			})
 		}
 	},
 	created() {
