@@ -1,7 +1,6 @@
 <template>
     <ul class="card-element card-bullet-line">
-        <li class="card-bullet">
-            {{content[0]}}
+        <li class="card-bullet" v-html="content[0]">
         </li>
     </ul>
 </template>

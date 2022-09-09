@@ -20,7 +20,7 @@
 					<option v-for="(cls,i) in classOptions" :value="cls" :key="i">{{cls}}</option>
 				</select><br/>
 				<input type="text" v-model="card_title"><br>
-				<textarea cols="30" rows="10" v-model="textIn"></textarea>
+				<textarea cols="30" rows="10" v-model="textIn" class="form-control"></textarea>
 			</div>
 			<div id="display" class="col d-flex">
 				<!-- front of the card -->
@@ -53,17 +53,21 @@
 <script>
 
 import class_icons from "../public/assets/scripts/classIcons"
+
 import TextComp from "./components/TextComp.vue"
 import ClassRuler from "./components/ClassRuler.vue"
 import BulletComp from "./components/BulletComp.vue" 
-import FillComp from "./components/FillComp.vue" 
+import FillComp from "./components/FillComp.vue"
+import SubtitleComp from "./components/SubtitleComp.vue"
+
 import UndefComp from "./components/UndefComp.vue"
 
 const matrix = {
 	text:'TextComp',
 	rule:'ClassRuler',
 	bullet:'BulletComp',
-	fill:'FillComp'
+	fill:'FillComp',
+	subtitle:'SubtitleComp'
 }
 
 function translationMatrix(s){
@@ -80,6 +84,7 @@ export default {
 		ClassRuler,
 		BulletComp,
 		FillComp,
+		SubtitleComp,
 		UndefComp,
 	},
 	data() {
@@ -142,6 +147,10 @@ export default {
 </script>
 
 <style>
+textarea{
+	font-size: 10px;
+}
+
 div#display>div{
 	margin: 5px;
 }
