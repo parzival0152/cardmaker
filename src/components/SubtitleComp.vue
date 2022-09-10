@@ -17,7 +17,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .card-subtitle {
     height: 18px;
     margin-bottom: 0.0em;

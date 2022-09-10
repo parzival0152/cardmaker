@@ -16,7 +16,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 .card-section {
     border-bottom: 1px solid;
     font-size: 10pt;

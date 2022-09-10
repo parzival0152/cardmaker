@@ -3,7 +3,7 @@
 	<div class="container">
 		<div class="row align-items-start">
 			<div id="general" class="col">
-				{{CompList}}
+				
 			</div>
 			<div id="settings" class="col">
 				card info
@@ -54,7 +54,7 @@
 <script>
 
 import class_icons from "../public/assets/scripts/classIcons"
-import icon_names from "../generator/js/icons"
+import icon_names from "../public/assets/generator/js/icons"
 
 import TextComp from "./components/TextComp.vue"
 import ClassRuler from "./components/ClassRuler.vue"

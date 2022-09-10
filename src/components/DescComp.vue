@@ -17,7 +17,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .card-description-line {
     margin-top: 0.5em;
     margin-bottom: 0.0em;

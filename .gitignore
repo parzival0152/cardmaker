@@ -22,11 +22,11 @@ pnpm-debug.log*
 *.sln
 *.sw?
 
-/generator/css/icons.css
-/generator/icons/
-/generator/js/*.d.ts
-/generator/js/*.map
-/generator/js/icons.js
+/public/assets/generator/css/icons.css
+/public/assets/generator/icons/
+/public/assets/generator/js/*.d.ts
+/public/assets/generator/js/*.map
+/public/assets/generator/js/icons.js
 /node_modules/
 /package-lock.json
 /temp.zip

@@ -8,10 +8,10 @@ const rimraf = require("rimraf");
 const gameIconsUrl = "https://game-icons.net/archives/svg/zip/ffffff/transparent/game-icons.net.svg.zip";
 const tempFilePath = "./temp.zip";
 const tempDir = "./temp";
-const iconDir = "./generator/icons";
+const iconDir = "./public/assets/generator/icons";
 const customIconDir = "./resources/custom-icons";
-const cssPath = "./generator/css/icons.css";
-const jsPath = "./generator/js/icons.js";
+const cssPath = "./public/assets//generator/css/icons.css";
+const jsPath = "./public/assets//generator/js/icons.js";
 
 
 // ----------------------------------------------------------------------------
@@ -120,7 +120,7 @@ function generateJS(src, dest) {
                 const content = "var icon_names = [\n" + files
                     .filter(fileName => imageExtensions.find(ext => ext === path.extname(fileName)))
                     .map(name => `    "${path.basename(name, path.extname(name))}"`)
-                    .join(",\n") + "\n]";
+                    .join(",\n") + "\n]" + "\nexport default icon_names;";
                 fs.writeFile(dest, content, err => {
                     if (err) {
                         reject(err);
