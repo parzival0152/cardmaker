@@ -11,7 +11,17 @@ const class_icons = [
     'class-rogue',
     'class-sorcerer',
     'class-warlock',
-    'class-wizard'
+    'class-wizard',
+    "white-book-0",
+    "white-book-1",
+    "white-book-2",
+    "white-book-3",
+    "white-book-4",
+    "white-book-5",
+    "white-book-6",
+    "white-book-7",
+    "white-book-8",
+    "white-book-9",
 ]
 
 export default class_icons

@@ -1,4 +1,5 @@
 <template>
+	<link rel="stylesheet" href="../generator/css/icons.css">
 	<div class="container">
 		<div class="row align-items-start">
 			<div id="general" class="col">
@@ -53,6 +54,7 @@
 <script>
 
 import class_icons from "../public/assets/scripts/classIcons"
+import icon_names from "../generator/js/icons"
 
 import TextComp from "./components/TextComp.vue"
 import ClassRuler from "./components/ClassRuler.vue"
@@ -103,7 +105,7 @@ export default {
 			accent_color: "#ffffff",
 			TopIcon:'',
 			BackIcon:'',
-			classOptions:class_icons,
+			classOptions:class_icons.concat(icon_names),
 			card_title:'',
 			textIn:'',
 			test:['hello there']

@@ -21,3 +21,13 @@ pnpm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+/generator/css/icons.css
+/generator/icons/
+/generator/js/*.d.ts
+/generator/js/*.map
+/generator/js/icons.js
+/node_modules/
+/package-lock.json
+/temp.zip
+/temp/
